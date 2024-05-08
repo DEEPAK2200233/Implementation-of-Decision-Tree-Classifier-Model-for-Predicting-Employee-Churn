@@ -1,4 +1,4 @@
-# Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn
+# Ex.No.6-Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn
 
 ## AIM:
 To write a program to implement the Decision Tree Classifier Model for Predicting Employee Churn.
@@ -7,101 +7,74 @@ To write a program to implement the Decision Tree Classifier Model for Predictin
 1. Hardware – PCs
 2. Anaconda – Python 3.7 Installation / Jupyter notebook
 
-## Algorithm :
+## Algorithm:
 
-1. Import pandas module and import the required data set.
-2. Find the null values and count them.
-3. Count number of left values.
-4. From sklearn import LabelEncoder to convert string values to numerical values.
-5. From sklearn.model_selection import train_test_split.
-6. Assign the train dataset and test dataset.
-7. From sklearn.tree import DecisionTreeClassifier.
-8. Use criteria as entropy.
-9. From sklearn import metrics.
-10. Find the accuracy of our model and predict the require values. 
+1. Import pandas library to read csv or excel file.
+2. Import LabelEncoder using sklearn.preprocessing library.
+3. Transform the data's using LabelEncoder.
+4. Import decision tree classifier from sklearn.tree library to predict the values.
+5. Find accuracy.
+6. Predict the values.
+7. End of the program.
 
-## Programs :
-
+## Program:
 ```
-Program to implement the Decision Tree Regressor Model for Predicting the Salary of the Employee.
+/*
+Program to implement the Decision Tree Classifier Model for Predicting Employee Churn.
 Developed by: DEEPAK RAJ S
-RegisterNumber:  212222240023
+RegisterNumber: 212222240023
+*/
 ```
 
-```python
+```
 import pandas as pd
-data = pd.read_csv("Employee.csv")
+data=pd.read_csv("Employee (1).csv")
 data.head()
 data.info()
-```
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/cd5ed94d-ff93-4bb2-9f74-3f6bc161875e)
-
-```python
 data.isnull().sum()
-```
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/73fda4c5-f77a-4529-b036-76a6d587c992)
-
-
-```python
-data["left"].value_counts
-```
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/b56af4d5-8747-4288-8e44-6b6dada52fe2)
-
-
-
-```python
+data["left"].value_counts()
 from sklearn.preprocessing import LabelEncoder
-le= LabelEncoder()
-data["salary"]=le.fit_transform(data["salary"])
+le=LabelEncoder()
+data ["salary"]=le.fit_transform(data["salary"])
 data.head()
-```
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/45a2811a-1f93-4184-9a06-7f5ce26712a5)
-
-
-```python
-x= data[["satisfaction_level","last_evaluation","number_project","average_montly_hours","time_spend_company","Work_accident","promotion_last_5years","salary"]]
-
+x=data[["satisfaction_level","last_evaluation","number_project","average_montly_hours","time_spend_company","Work_accident","promotion_last_5years","salary"]]
 x.head()
-```
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/39075de0-7bc5-43ee-a51a-204a50962a27)
-
-
-```python
 y=data["left"]
-
 from sklearn.model_selection import train_test_split
-x_train,x_test,y_train,y_test = train_test_split(x,y,test_size=0.2,random_state = 100)
-
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=100)
 from sklearn.tree import DecisionTreeClassifier
-dt = DecisionTreeClassifier(criterion="entropy")
+dt=DecisionTreeClassifier(criterion="entropy")
 dt.fit(x_train,y_train)
-```
-
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/c46d09ed-3ab8-4af9-b12d-bcd9ec52fed5)
-
-
-```python
-y_pred = dt.predict(x_test)
+y_pred=dt.predict(x_test)
 from sklearn import metrics
-
-accuracy = metrics.accuracy_score(y_test,y_pred)
-accuracy
-```
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/d042abfa-3736-4741-be7a-40a17e5a6d31)
-
-
-```python
+accuracy=metrics.accuracy_score(y_test,y_pred)
+print(accuracy)
 dt.predict([[0.5,0.8,9,260,6,0,1,2]])
 ```
-## Output :
-![image](https://github.com/SANTHAN-2006/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/80164014/5bd862e8-6586-4e14-8ac0-2b88aa02b579)
+
+## Output:
+
+![image](https://github.com/Sriram8452/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118708032/9863ba0f-6dc6-48b9-b6ee-53380f1938cb)
+
+![image](https://github.com/Sriram8452/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118708032/b823b527-9080-4d47-8144-a75f11b8ff33)
+
+![image](https://github.com/Sriram8452/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118708032/54c501c3-b063-4edf-87e0-4cd709f01af0)
+
+![image](https://github.com/Sriram8452/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118708032/ac85c899-5d60-4240-9b88-fb1bd318fbc6)
+
+
+![image](https://github.com/Sriram8452/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118708032/593863a0-b603-4058-8342-04e8ed200f6f)
+
+
+
+![image](https://github.com/Sriram8452/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118708032/59c9d6c2-7088-4ea2-8ddd-cd183ebf4034)
+
+![image](https://github.com/Sriram8452/Implementation-of-Decision-Tree-Classifier-Model-for-Predicting-Employee-Churn/assets/118708032/6f2ccedb-a907-4191-ac4c-ab9f1efe5771)
+
+
+
+
+
 
 ## Result:
-Thus the program to implement the Decision Tree Classifier Model for Predicting Employee Churn is written and verified using python programming.
+Thus the program to implement the  Decision Tree Classifier Model for Predicting Employee Churn is written and verified using python programming.
